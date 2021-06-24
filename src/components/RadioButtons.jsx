@@ -1,7 +1,7 @@
 
 import RadioButton from "./RadioButton"
 
-function RadioButtons({inputNames, onChangeHandlerRadio}){
+function RadioButtons({inputNames, onChangeHandlerRadio, name}){
    
     console.log(inputNames)
 
@@ -9,7 +9,7 @@ function RadioButtons({inputNames, onChangeHandlerRadio}){
 
     return(
         <ul>
-            {inputNames.map(item => <li><RadioButton  onChangeHandlerRadio={onChangeHandlerRadio} id={item.id} type={item.type} name={item.name} value={item.value} ></RadioButton><label for={`${item.id}`}>{item.text}</label></li> )}
+            {inputNames.map(item => <li><RadioButton  onChangeHandlerRadio={onChangeHandlerRadio} id={item.id} type={"radio"} name={name} value={item.value} ></RadioButton><label for={`${item.id}`}>{item.text}</label></li> )}
         </ul>
      
     )

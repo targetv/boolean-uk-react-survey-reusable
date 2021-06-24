@@ -3,14 +3,14 @@ import CheckBox from "./CheckBox"
 
 
 
-function CheckBoxs({inputNames, onChangeHandlerCheckBox}){
+function CheckBoxs({inputNames, onChangeHandlerCheckBox, name}){
 
 
 
   console.log(inputNames)
     return (
     <ul>
-        {inputNames.map( item => <li> <CheckBox onChangeHandlerCheckBox={onChangeHandlerCheckBox} name = {item.name} type = {item.type} value = {item.value} >{item.text} </CheckBox></li>
+        {inputNames.map( item => <li> <CheckBox onChangeHandlerCheckBox={onChangeHandlerCheckBox} name = {name} type = {"checkbox"} value = {item.value} >{item.text} </CheckBox></li>
   
         )}
 
