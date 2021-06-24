@@ -4,13 +4,49 @@ import RadioButtons from '../components/RadioButtons'
 import { useState } from 'react'
 
 function Form(){
+    const initialForm = {
+        username: "",
+        email: "",
+        logo: "",
+        colour: "",
+        consistency: "",
+        timeSpent: [],
+        review: "",
+        bestFeatures: [],
+        worstFeatures: []
+    }
+       
+      
+    
+         const [formValueInputs, setFormValueInputs] = useState(initialForm)
+
+
+    function onChangeHandlerCheckBox(event){
+        const {name, checked, value} = event.target
+        
+       let updateArray =  checked ? [...formValueInputs[name], value] 
+        :  formValueInputs[name].filter(item => item !== value)
+        
+        setFormValueInputs({...formValueInputs, [name]: updateArray })
+      }
+
+
+    function onChangeHandlerRadio(event){
+        const {name, value} = event.target
+        if(value){
+          setFormValueInputs({...formValueInputs, [name]: value})
+        }
+        
+      }
+     
+
     const bestFeatures = [
         {
            name:"bestFeatures",
            value:"colour",
            text: `It's
            yellow!`,
-           type: "checkbox"
+           type: "checkbox",
          },
          {
            name:"bestFeatures",
@@ -128,27 +164,27 @@ function Form(){
     <h2>Tell us what you think about your rubber duck!</h2>
     <div class="form__group">
       <h3>What would you say that are the best features of your rubber duck?</h3>
-      {<CheckBoxs inputNames = {bestFeatures}/>}
+      {<CheckBoxs inputNames = {bestFeatures} onChangeHandlerCheckBox={onChangeHandlerCheckBox}/>}
     </div>
     <div class="form__group">
       <h3>What would you say that are the worst bits of your rubber duck?</h3>
-      {<CheckBoxs inputNames = {worstFeatures}/>}
+      {<CheckBoxs inputNames = {worstFeatures} onChangeHandlerCheckBox={onChangeHandlerCheckBox}/>}
     </div>
     <div class="form__group radio">
       <h3>How do you rate your rubber duck consistency?</h3>
-      {<RadioButtons inputNames = {rateDuck}/>}
+      {<RadioButtons inputNames = {rateDuck}  onChangeHandlerRadio={onChangeHandlerRadio}/>}
     </div>
     <div class="form__group radio">
       <h3>How do you rate your rubber duck colour?</h3>
-      {<RadioButtons inputNames = {rateColour}/>}
+      {<RadioButtons inputNames = {rateColour} onChangeHandlerRadio={onChangeHandlerRadio}/>}
     </div>
     <div class="form__group radio">
       <h3>How do you rate your rubber duck logo?</h3>
-      {<RadioButtons inputNames = {rateLogo}/>}
+      {<RadioButtons inputNames = {rateLogo} onChangeHandlerRadio={onChangeHandlerRadio}/>}
     </div>
     <div class="form__group">
       <h3>How do you like to spend time with your rubber duck</h3>
-      {<CheckBoxs inputNames = {timeSpent}/>}
+      {<CheckBoxs inputNames = {timeSpent} onChangeHandlerCheckBox={onChangeHandlerCheckBox}/>}
     </div>
     <label
       >What else have you got to say about your rubber duck?<textarea

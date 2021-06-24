@@ -1,10 +1,10 @@
 
 
 
-function RadioButton({...props}){
+function RadioButton({onChangeHandlerRadio, ...props}){
     return  (
     <>
-      <input {...props} />
+      <input onChange={e =>  onChangeHandlerRadio(e)} {...props} />
    </>  
   )
 }

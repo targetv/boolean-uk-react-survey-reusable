@@ -1,7 +1,7 @@
-function CheckBox({children, ...props}){
+function CheckBox({children, onChangeHandlerCheckBox, ...props}){
     return (
         <label
-            ><input {...props} />{children}</label
+            ><input {...props} onChange={e => onChangeHandlerCheckBox(e)} />{children}</label
           >
        
     )
